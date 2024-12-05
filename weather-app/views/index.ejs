@@ -15,8 +15,8 @@
         <input type="text" name="city" placeholder="Enter city name" />
         <button type="submit">Get Weather</button>
       </form>
-       <% if (err) { %>
-      <p class="error"><%= err%></p>
+       <% if (error) { %>
+      <p class="error"><%= error%></p>
       <% } else if (weather) { %>
       <div class="card">
         <!-- Add your weather data here -->
