@@ -10,7 +10,7 @@ app.use(express.static("public"));
 
 // Render the index template with default values for weather and error
 app.get("/", (req, res) => {
-  res.render("index", { weather: null, error: null });
+  res.render("index", { weather: null, erroror: null });
 });
 
 // Handle the /weather route
@@ -23,18 +23,18 @@ app.get("/weather", async (req, res) => {
   
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`;
   let weather;
-  let err = null;
+  let error = null;
 try{
   const response = await axios.get(url)
   weather = response.data;
   console.log(response);
 }
-catch (err){
+catch (error){
 weather = null;
-err = "error, please try again";
+error = "Error, please try again";
 }
   // Render the index template with the weather data and error message
-  res.render("index", { weather, err });
+  res.render("index", { weather, error });
 });
 
 // Start the server and listen on port 3000 or the value of the PORT environment variable
